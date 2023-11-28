@@ -133,4 +133,4 @@ const createGame = () => {
 const game = createGame();
 game.startGame();
 
-//makeMove(0); => code to play the game in the console.
+//makeMove(0); => code to play the game in the console
