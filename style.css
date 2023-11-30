@@ -1,0 +1,57 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#display {
+    display: flex;
+    width: 1000px;
+    height: 350px;
+    outline-style: solid;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#board {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin-top: 50px;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+button {
+    font-size: 100px;
+}
+
+p {
+    font-size: 100px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#startGame,
+#restartGame {
+    font-size: 20px;
+    font-weight: bolder;
+    width: 100px;
+    height: 100px;
+}
