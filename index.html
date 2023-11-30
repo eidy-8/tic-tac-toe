@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tic-tac-toe</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <div id="buttons">
+        <button onclick="game.startGame()" id="startGame">Start The Game</button>
+        <button id="restartGame">Restart The Game</button>
+    </div>
+
+    <div id="game">
+        <div id="display">
+            <div id="score"></div>
+        </div>
+        <div id="board">
+            <button onclick="game.makeMove(0)" id="btn0"></button>
+            <button onclick="game.makeMove(1)" id="btn1"></button>
+            <button onclick="game.makeMove(2)" id="btn2"></button>
+            <button onclick="game.makeMove(3)" id="btn3"></button>
+            <button onclick="game.makeMove(4)" id="btn4"></button>
+            <button onclick="game.makeMove(5)" id="btn5"></button>
+            <button onclick="game.makeMove(6)" id="btn6"></button>
+            <button onclick="game.makeMove(7)" id="btn7"></button>
+            <button onclick="game.makeMove(8)" id="btn8"></button>
+        </div>
+    </div>
 </body>
 </html>
