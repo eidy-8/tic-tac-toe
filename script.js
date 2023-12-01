@@ -4,7 +4,7 @@ const createPlayer = (name, marker, score) => {
 };
 
 // Factory function for creating the game board
-const createGameboard = () => { //gameboard status
+const createGameboard = () => { 
     const board = ["","","","","","","","",""];
 
     return {board};
@@ -14,7 +14,34 @@ const createGameboard = () => { //gameboard status
 const createGame = () => { 
     let currentPlayer;
     let gameActive = true;
-    const players = [createPlayer("Player1", "X", 0), createPlayer("Player2", "O", 0)];
+    let players = [];
+
+    popup.showModal();
+
+    function submitForm() {
+        var formData = {
+            player1 : document.getElementById("player1Name").value,
+            player2 : document.getElementById("player2Name").value
+        };
+
+        if (formData.player1 == "") {
+            formData.player1 = "player1";
+        } 
+        if (formData.player2 == "") {
+            formData.player2 = "player2";
+        }
+        
+        players = [
+            createPlayer(formData.player1, "X", 0),
+            createPlayer(formData.player2, "O", 0)
+        ];
+
+        console.log(formData.player1);
+
+        game.startGame();
+        popup.close();
+    }
+
     const gameboard = createGameboard();
 
     const switchPlayer = () => {
@@ -43,12 +70,12 @@ const createGame = () => {
                 gameTextElement.innerHTML = `${currentPlayer.name} wins!`;
 
                 currentPlayer = undefined;
-
                 gameActive = false;
             } else if (checkTie()) {
                 gameTextElement.innerHTML = "";
                 gameTextElement.innerHTML = "It\'s a tie!";
 
+                currentPlayer = undefined;
                 gameActive = false;
             } else {
                 switchPlayer();
@@ -140,6 +167,8 @@ const createGame = () => {
         let displayElement = document.getElementById("display");
         let scoreElement = document.getElementById("score");
 
+        console.log(players[0]);
+
         if (currentPlayer == undefined) {
             currentPlayer = players[Math.floor(Math.random() * 2)];
 
@@ -149,9 +178,10 @@ const createGame = () => {
         }
     };
 
-    return {startGame, makeMove};
+    return {startGame, makeMove, submitForm};
 };
 
 const game = createGame();
+
 
 
