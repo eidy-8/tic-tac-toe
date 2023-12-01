@@ -15,6 +15,15 @@ const createGame = () => {
     let currentPlayer;
     let gameActive = true;
     let players = [];
+    const cell0 = document.getElementById("btn0");
+    const cell1 = document.getElementById("btn1");
+    const cell2 = document.getElementById("btn2");
+    const cell3 = document.getElementById("btn3");
+    const cell4 = document.getElementById("btn4");
+    const cell5 = document.getElementById("btn5");
+    const cell6 = document.getElementById("btn6");
+    const cell7 = document.getElementById("btn7");
+    const cell8 = document.getElementById("btn8");
 
     popup.showModal();
 
@@ -35,8 +44,6 @@ const createGame = () => {
             createPlayer(formData.player1, "X", 0),
             createPlayer(formData.player2, "O", 0)
         ];
-
-        console.log(formData.player1);
 
         game.startGame();
         popup.close();
@@ -90,6 +97,9 @@ const createGame = () => {
             gameboard.board[1] === currentPlayer.marker &&
             gameboard.board[2] === currentPlayer.marker
         ) {
+            cell0.style.color = "green";
+            cell1.style.color = "green";
+            cell2.style.color = "green";
             return true;
         }
 
@@ -98,6 +108,9 @@ const createGame = () => {
             gameboard.board[4] === currentPlayer.marker &&
             gameboard.board[5] === currentPlayer.marker
         ) {
+            cell3.style.color = "green";
+            cell4.style.color = "green";
+            cell5.style.color = "green";
             return true;
         }
 
@@ -106,6 +119,9 @@ const createGame = () => {
             gameboard.board[7] === currentPlayer.marker &&
             gameboard.board[8] === currentPlayer.marker
         ) {
+            cell6.style.color = "green";
+            cell7.style.color = "green";
+            cell8.style.color = "green";
             return true;
         }
 
@@ -115,6 +131,9 @@ const createGame = () => {
             gameboard.board[3] === currentPlayer.marker &&
             gameboard.board[6] === currentPlayer.marker
         ) {
+            cell0.style.color = "green";
+            cell3.style.color = "green";
+            cell6.style.color = "green";
             return true;
         }
 
@@ -123,6 +142,9 @@ const createGame = () => {
             gameboard.board[4] === currentPlayer.marker &&
             gameboard.board[7] === currentPlayer.marker
         ) {
+            cell1.style.color = "green";
+            cell4.style.color = "green";
+            cell7.style.color = "green";
             return true;
         }
 
@@ -131,6 +153,9 @@ const createGame = () => {
             gameboard.board[5] === currentPlayer.marker &&
             gameboard.board[8] === currentPlayer.marker
         ) {
+            cell2.style.color = "green";
+            cell5.style.color = "green";
+            cell8.style.color = "green";
             return true;
         }
 
@@ -140,6 +165,9 @@ const createGame = () => {
             gameboard.board[4] === currentPlayer.marker &&
             gameboard.board[8] === currentPlayer.marker
         ) {
+            cell0.style.color = "green";
+            cell4.style.color = "green";
+            cell8.style.color = "green";
             return true;
         }
 
@@ -148,6 +176,9 @@ const createGame = () => {
             gameboard.board[4] === currentPlayer.marker &&
             gameboard.board[6] === currentPlayer.marker
         ) {
+            cell2.style.color = "green";
+            cell4.style.color = "green";
+            cell6.style.color = "green";
             return true;
         }
 
@@ -162,12 +193,46 @@ const createGame = () => {
     };
 
     const startGame = () => {
-        let gameTextElement = document.createElement("p");
-        gameTextElement.id = "topTxt";
+        let gameTextElement = document.getElementById("topTxt");
         let displayElement = document.getElementById("display");
         let scoreElement = document.getElementById("score");
 
-        console.log(players[0]);
+        if (gameTextElement.parentNode === displayElement) { //clean the display for another round
+            displayElement.removeChild(gameTextElement);
+        }
+
+        if (gameActive == false) { //clean the board for another round
+            gameActive = true;
+            gameboard.board[0] = "";
+            gameboard.board[1] = "";
+            gameboard.board[2] = "";
+            gameboard.board[3] = "";
+            gameboard.board[4] = "";
+            gameboard.board[5] = "";
+            gameboard.board[6] = "";
+            gameboard.board[7] = "";
+            gameboard.board[8] = "";
+
+            cell0.innerHTML = "";
+            cell1.innerHTML = "";
+            cell2.innerHTML = "";
+            cell3.innerHTML = "";
+            cell4.innerHTML = "";
+            cell5.innerHTML = "";
+            cell6.innerHTML = "";
+            cell7.innerHTML = "";
+            cell8.innerHTML = "";
+
+            cell0.style.color = "black";
+            cell1.style.color = "black";
+            cell2.style.color = "black";
+            cell3.style.color = "black";
+            cell4.style.color = "black";
+            cell5.style.color = "black";
+            cell6.style.color = "black";
+            cell7.style.color = "black";
+            cell8.style.color = "black";
+        }
 
         if (currentPlayer == undefined) {
             currentPlayer = players[Math.floor(Math.random() * 2)];
